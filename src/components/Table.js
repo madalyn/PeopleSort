@@ -7,25 +7,6 @@ Turja|Tenesha|C|Both|Green|2-3-1985
 Evelo|Dalila|G|None|Blue|6-3-1968
 */
 
-const tableData = [
-  {
-    lastName: "Coryea",
-    firstName: "Madalyn",
-    middleInitial: "E",
-    pet: "Dog",
-    birthday: "7/27/1992",
-    favoriteColor: "green"
-  },
-  {
-    lastName: "Ripley",
-    firstName: "Wesley",
-    middleInitial: "J",
-    pet: "Dog",
-    birthday: "11/15/1991",
-    favoriteColor: "purple"
-  }
-];
-
 class Table extends Component {
   render() {
     return (
@@ -50,7 +31,7 @@ class Table extends Component {
             Favorite Color {this.props.sortedColumn === "favoriteColor" ? "*" : ""}
           </th>
         </tr>
-        {tableData.map(data => <TableRow data={data} />)}
+        {this.props.tableData.map(data => <TableRow data={data} />)}
       </table>
     );
   }
