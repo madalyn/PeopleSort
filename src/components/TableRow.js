@@ -10,9 +10,9 @@ class TableRow extends Component {
 	 * TODO: ask about 'N'?
 	 */
 	formatPetData() {
-		const data = this.props.data;
+		const pet = this.props.data.pet;
 
-		switch (data.pet) {
+		switch (pet) {
 			case "C":
 				return "Cat";
 			case "D":
@@ -20,8 +20,13 @@ class TableRow extends Component {
 			case "B":
 				return "Both";
 			default:
-				return data.pet;
+				return pet;
 		}
+	}
+
+	formatBirthdayData() {
+		const birthday = this.props.data.birthday;
+		return birthday.split("-").join("/");
 	}
 
 	render() {
@@ -33,7 +38,7 @@ class TableRow extends Component {
 				<td>{data.firstName}</td>
 				<td>{data.middleInitial}</td>
 				<td>{this.formatPetData()}</td>
-				<td>{data.birthday}</td>
+				<td>{this.formatBirthdayData()}</td>
 				<td>{data.favoriteColor}</td>
 			</tr>
 		);

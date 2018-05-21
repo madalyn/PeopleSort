@@ -52,7 +52,7 @@ function sortByDate(tableData, columnName) {
  * convert it to a Date object
  */
 function convertStringToDateObject(dateString) {
-	dateString.replace("/", "-");
+	dateString.split("/").join("-");
 	return new Date(dateString);
 }
 
