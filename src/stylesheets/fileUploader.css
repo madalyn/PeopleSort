@@ -1,3 +1,57 @@
 .fileUploader {
 	float: right;
 }
+
+.fileUploader span {
+	margin-right: 20px;
+	color: #a7a9ac;
+	line-height: 40px;
+	vertical-align: top;
+}
+.fileUploader div {
+	display: inline-block;
+}
+
+.fileContainer,
+.fileContainer span,
+.fileContainer input {
+	cursor: pointer;
+}
+.fileContainer {
+	width: 430px;
+	height: 40px;
+	overflow: hidden;
+	position: relative;
+	border: 1px solid #e6e7e8;
+	border-radius: 5px;
+}
+.fileContainer > input[type="file"] {
+	font-size: 200px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	border-radius: 5px;
+}
+.fileContainer > .browseButton {
+	display: inline-block;
+	width: 110px;
+	height: 40px;
+	background-color: #54bbff;
+	border: 1px solid #54bbff;
+	color: #ffffff;
+	float: right;
+	margin: 0;
+	text-align: center;
+	line-height: 40px;
+	vertical-align: middle;
+}
+
+.fileArea {
+	width: 400px;
+	font-size: 13px;
+	font-weight: lighter;
+	line-height: 40px;
+	vertical-align: middle;
+	padding: 0 10px;
+}
