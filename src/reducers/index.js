@@ -1,6 +1,7 @@
 import sortTable from "./sortTable";
+import tableData from "./tableData";
 
-const tableData = [
+const fakeData = [
 	{
 		lastName: "Coryea",
 		firstName: "Madalyn",
@@ -44,5 +45,8 @@ const tableData = [
 ];
 
 export default function rootReducer(state = {}, action) {
-	return { tableData: tableData, sortTable: sortTable(state.sortTable, action) };
+	return {
+		tableData: tableData(state.tableData, action),
+		sortTable: sortTable(state.sortTable, action)
+	};
 }

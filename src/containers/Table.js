@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import Table from "../components/Table";
 import sortTable from "../actions/sortTable";
+import addData from "../actions/tableData";
 
 function mapStateToProps(state) {
 	return {
 		sortedColumn: state.sortTable.sortedColumn,
 		tableData: state.sortTable.sortedColumn
-			? sort(state.tableData, state.sortTable.sortedColumn)
+			? sort(state.tableData, state.sortTable.sortedColumn, state.sortTable.isAscending)
 			: state.tableData
 	};
 }
@@ -15,6 +16,9 @@ function mapDispatchToProps(dispatch) {
 	return {
 		createSortHandler: columnName => () => {
 			dispatch(sortTable(columnName));
+		},
+		populateTableData: tableData => {
+			dispatch(addData(tableData));
 		}
 	};
 }
@@ -22,11 +26,18 @@ function mapDispatchToProps(dispatch) {
 /**
  * Determine which sort to use based on type of data in column
  */
-function sort(tableData, columnName) {
+function sort(tableData, columnName, isAscending) {
+	let result;
 	if (columnName === "birthday") {
-		return sortByDate(tableData, columnName);
+		result = sortByDate(tableData, columnName);
+	} else {
+		result = sortAlphabetically(tableData, columnName);
 	}
-	return sortAlphabetically(tableData, columnName);
+
+	if (!isAscending) {
+		return result.slice(0).reverse();
+	}
+	return result;
 }
 
 // need to sort the different columns

@@ -16,6 +16,35 @@ class TableRow extends Component {
 		}
 	}
 
+	formatPetData(pet) {
+		switch (pet) {
+			case "C":
+				return "Cat";
+			case "D":
+				return "Dog";
+			case "B":
+				return "Both";
+			case "N":
+				return "None";
+			default:
+				return pet;
+		}
+	}
+
+	// TODO: sql yyyy-mm-dd
+	// m-d-yyyy or m/d/yyyy
+	formatBirthdayData(birthday) {
+		//return birthday.split("-").join("/");
+		const date = new Date(birthday);
+		return (
+			(date.getMonth() + 1).toString() +
+			"/" +
+			date.getDate().toString() +
+			"/" +
+			date.getFullYear().toString()
+		);
+	}
+
 	render() {
 		const data = this.props.data;
 
@@ -26,9 +55,9 @@ class TableRow extends Component {
 				<td>{data.middleInitial}</td>
 				<td>
 					<img src={this.getPetImage()} width="25" height="25" />
-					{data.pet}
+					{this.formatPetData(data.pet)}
 				</td>
-				<td>{data.birthday}</td>
+				<td>{this.formatBirthdayData(data.birthday)}</td>
 				<td>{data.favoriteColor}</td>
 			</tr>
 		);
