@@ -1,0 +1,5 @@
+.peopleCount {
+	float: left;
+	font-size: 25px;
+	color: #363945; /*TODO: standardize colors across files*/
+}

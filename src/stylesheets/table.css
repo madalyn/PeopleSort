@@ -1,7 +1,18 @@
 table {
+	width: 100%;
 }
 
 .selectedHeader {
 	color: #54bbff;
 	font-weight: bold;
+}
+
+tbody tr {
+	height: 50px;
+}
+
+th {
+	text-align: left;
+	font-weight: normal;
+	color: #a7a9ac;
 }

@@ -1,8 +1,14 @@
 import React, { Component } from "react";
+import "../stylesheets/fileUploader.css";
 
 class FileUploader extends Component {
 	render() {
-		return <input type="file" onChange={this.props.handleFileUpload} />;
+		return (
+			<div className="fileUploader">
+				<span>Import a File</span>
+				<input type="file" onChange={this.props.handleFileUpload} />
+			</div>
+		);
 	}
 }
 
