@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TableRow from "./TableRow";
+import "../stylesheets/table.css";
 
 /*
 Runyon|Yoshie|H|Cat|Red|10-15-1979
@@ -14,28 +15,26 @@ class Table extends Component {
       .then(tableData => this.props.populateTableData(tableData));
   }
   render() {
+    const tableHeaders = {};
+    tableHeaders["lastName"] = "Last Name";
+    tableHeaders["firstName"] = "First Name";
+    tableHeaders["middleInitial"] = "Middle Initial";
+    tableHeaders["pet"] = "Pet";
+    tableHeaders["birthday"] = "Birthday";
+    tableHeaders["favoriteColor"] = "Favorite Color";
+
     return (
       <table>
         <thead>
           <tr>
-            <th onClick={this.props.createSortHandler("lastName")}>
-              Last Name {this.props.sortedColumn === "lastName" ? "*" : ""}
-            </th>
-            <th onClick={this.props.createSortHandler("firstName")}>
-              First Name {this.props.sortedColumn === "firstName" ? "*" : ""}
-            </th>
-            <th onClick={this.props.createSortHandler("middleInitial")}>
-              Middle Initial {this.props.sortedColumn === "middleInitial" ? "*" : ""}
-            </th>
-            <th onClick={this.props.createSortHandler("pet")}>
-              Pet {this.props.sortedColumn === "pet" ? "*" : ""}
-            </th>
-            <th onClick={this.props.createSortHandler("birthday")}>
-              Birthday {this.props.sortedColumn === "birthday" ? "*" : ""}
-            </th>
-            <th onClick={this.props.createSortHandler("favoriteColor")}>
-              Favorite Color {this.props.sortedColumn === "favoriteColor" ? "*" : ""}
-            </th>
+            {Object.keys(tableHeaders).map(key => (
+              <th
+                className={this.props.sortedColumn === key ? "selectedHeader" : ""}
+                onClick={this.props.createSortHandler(key)}
+              >
+                {tableHeaders[key]}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>{this.props.tableData.map(data => <TableRow key={data.id} data={data} />)}</tbody>

@@ -5,17 +5,20 @@ class TableRow extends Component {
 		const pet = this.props.data.pet;
 
 		switch (pet) {
-			case "Cat":
+			case "C":
 				return "/images/cat.png";
-			case "Dog":
+			case "D":
 				return "/images/dog.png";
-			case "Both":
+			case "B":
 				return "/images/both.png";
 			default:
 				return "";
 		}
 	}
 
+	/**
+	 * DB currently stores these in single chars. Map them here to what we want to display.
+	 */
 	formatPetData(pet) {
 		switch (pet) {
 			case "C":
@@ -31,10 +34,11 @@ class TableRow extends Component {
 		}
 	}
 
-	// TODO: sql yyyy-mm-dd
-	// m-d-yyyy or m/d/yyyy
+	/**
+	 * Take the date currently in sql format and create a string in the desired display format
+	 */
 	formatBirthdayData(birthday) {
-		//return birthday.split("-").join("/");
+		// easiest to use a date object to get the correct pieces of data
 		const date = new Date(birthday);
 		return (
 			(date.getMonth() + 1).toString() +
