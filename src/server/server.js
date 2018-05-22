@@ -56,7 +56,7 @@ function parseFileData(file) {
 		return {
 			lastName: data[dataOrder[0]],
 			firstName: data[dataOrder[1]],
-			middleInitial: dataOrder[2] ? data[dataOrder[2]] : null, //data[null]
+			middleInitial: dataOrder[2] !== null ? data[dataOrder[2]] : null, //data[null]
 			pet: data[dataOrder[3]],
 			birthday: data[dataOrder[4]],
 			favoriteColor: data[dataOrder[5]]
