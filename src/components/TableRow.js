@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../stylesheets/tableRow.css";
 
 class TableRow extends Component {
 	getPetImage() {
@@ -57,9 +58,9 @@ class TableRow extends Component {
 				<td>{data.lastName}</td>
 				<td>{data.firstName}</td>
 				<td>{data.middleInitial}</td>
-				<td>
-					<img src={this.getPetImage()} width="25" height="25" />
-					{this.formatPetData(data.pet)}
+				<td className={data.pet === "N" ? "noPet" : "hasPet"}>
+					<img src={this.getPetImage()} />
+					<span>{this.formatPetData(data.pet)}</span>
 				</td>
 				<td>{this.formatBirthdayData(data.birthday)}</td>
 				<td>{data.favoriteColor}</td>

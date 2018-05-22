@@ -1,5 +1,6 @@
 table {
 	width: 100%;
+	border-collapse: collapse;
 }
 
 .selectedHeader {
@@ -9,6 +10,10 @@ table {
 
 tbody tr {
 	height: 50px;
+}
+
+thead tr {
+	height: 40px;
 }
 
 th {
